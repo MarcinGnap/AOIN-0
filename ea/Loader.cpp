@@ -68,7 +68,15 @@ bool Loader::OpenTSPFile(std::string& FileName)
 		if (tempLine.find("DIMENSION") != string::npos)
 		{
 			verticesNumber = stoi(tempLine.substr(tempLine.find(":") + 1));
-			break;
+		}
+		if (tempLine.find("NODE_COORD_SECTION") != string::npos)
+		{
+			for (int i = 0; i < verticesNumber; i++) {
+				int vertice, x, y;
+				string ttline;
+				tspFile >> ttline;
+				cout << ttline << endl;
+			}
 		}
 	}
 
