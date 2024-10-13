@@ -23,6 +23,7 @@ int main()
             case 1:
             {
                 loader.OpenIni();
+                loader.OpenTSPFile(loader.fileName);
                 break;
             }
             case 2:
