@@ -127,13 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AdjacencyMatrix.cpp" />
     <ClCompile Include="ea.cpp" />
     <ClCompile Include="EvoAlg.cpp" />
     <ClCompile Include="Loader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdjacencyMatrix.h" />
     <ClInclude Include="EvoAlg.h" />
     <ClInclude Include="Loader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ea.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

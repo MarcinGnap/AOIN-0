@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include "Loader.h"
+#include "EvoAlg.h"
 
 using namespace std;
 
@@ -7,6 +8,7 @@ int main()
 {
     short mainMenuChoice;
     Loader loader;
+    EvoAlg evoalg;
 
     for (;;)
     {
