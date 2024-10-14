@@ -10,7 +10,7 @@ public:
 	int optCost;
 	int verticesNumber;
 	int* bestPath;
-	int** verticesGraph;
+	float** verticesGraph;
 
 	Loader();
 	~Loader();

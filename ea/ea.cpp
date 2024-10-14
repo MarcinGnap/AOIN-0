@@ -24,6 +24,14 @@ int main()
             {
                 loader.OpenIni();
                 loader.OpenTSPFile(loader.fileName);
+                for (int i = 0; i < loader.verticesNumber; i++) {
+                    cout << "\t" << i;
+                    for (size_t j = 0; j < 2; j++)
+                    {
+                        cout << " " << loader.verticesGraph[i][j];
+                    }
+                    cout << "\n";
+                }
                 break;
             }
             case 2:
