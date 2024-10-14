@@ -1,6 +1,9 @@
 #include "Loader.h"
 #include <iostream>
 #include <fstream>
+#include <time.h>
+#include <stdlib.h>
+#include <windows.h>
 
 using namespace std;
 
@@ -12,16 +15,66 @@ Loader::~Loader()
 {
 	if (verticesNumber != 0)
 	{
-		for (int i = 0; i < verticesNumber; i++) {
-			delete verticesGraph[i];
-		}
-		delete verticesGraph;
-		verticesGraph = NULL;
-		verticesNumber = 0;
+		deleteGraph();
 	}
 }
 
-bool Loader::OpenIni()
+void Loader::deleteGraph()
+{
+	for (int i = 0; i < verticesNumber; i++)
+	{
+		delete verticesGraph[i];
+	}
+	delete verticesGraph;
+	verticesGraph = NULL;
+	verticesNumber = 0;
+}
+
+void Loader::printGraph()
+{
+	cout << "File: " << fileName << "\nNumber of vertices: " << verticesNumber << "\nVertices: \n";
+	for (int i = 0; i < verticesNumber; i++) {
+		cout << "\t" << i << " - \t";
+		for (size_t j = 0; j < 2; j++)
+		{
+			if (j == 0) {
+				cout << "X: ";
+			}
+			else {
+				cout << "Y: ";
+			}
+			cout << " " << verticesGraph[i][j] << "  \t";
+		}
+		cout << "\n";
+	}
+}
+
+bool Loader::createRandomGraph(int generatedVertices, int maxValue)
+{
+	cout << "Creating random graph with " << generatedVertices << " vertices and max value of singular path of " << maxValue << " ...\n";
+	if (verticesNumber != 0)
+	{
+		deleteGraph();
+	}
+
+	fileName = "Generated-graph";
+	verticesNumber = generatedVertices; 
+	verticesGraph = new float* [generatedVertices];
+	for (int i = 0; i < generatedVertices; i++) {
+		verticesGraph[i] = new float[2];
+	}
+	srand(GetTickCount64());
+	for (int i = 0; i < generatedVertices; i++)
+	{
+		for (int j = 0; j < 2; j++) {
+			verticesGraph[i][j] = rand() % maxValue;
+		}
+	}
+	printGraph();
+	return true;
+}
+
+bool Loader::openIni()
 {
 	cout << "Opening .ini file...\n";
 	ifstream iniFile("config.ini", std::ios::in);
@@ -39,7 +92,7 @@ bool Loader::OpenIni()
 	return false;
 }
 
-bool Loader::OpenTSPFile(std::string& FileName)
+bool Loader::openTSPFile(std::string& FileName)
 {
 	cout << "Opening TSP file...\n";
 	ifstream tspFile(fileName, ios::in);
@@ -49,15 +102,10 @@ bool Loader::OpenTSPFile(std::string& FileName)
 		cout << "This file does not exist...\n";
 		return false;
 	}
+
 	if (verticesNumber != 0)
 	{
-		for (int i = 0; i < verticesNumber; i++)
-		{
-			delete verticesGraph[i];
-		}
-		delete verticesGraph;
-		verticesGraph = NULL;
-		verticesNumber = 0;
+		deleteGraph();
 	}
 	cout << "TSP file opened properly...\n";
 
@@ -86,7 +134,6 @@ bool Loader::OpenTSPFile(std::string& FileName)
 			}
 		}
 	}
-
 
 	tspFile.close();
 	return false;

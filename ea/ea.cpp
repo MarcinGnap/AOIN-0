@@ -22,20 +22,18 @@ int main()
         {
             case 1:
             {
-                loader.OpenIni();
-                loader.OpenTSPFile(loader.fileName);
-                for (int i = 0; i < loader.verticesNumber; i++) {
-                    cout << "\t" << i;
-                    for (size_t j = 0; j < 2; j++)
-                    {
-                        cout << " " << loader.verticesGraph[i][j];
-                    }
-                    cout << "\n";
-                }
+                loader.openIni();
+                loader.openTSPFile(loader.fileName);
                 break;
             }
             case 2:
             {
+                int generatedVertices, maxValue;
+                cout << "How many vertices should be in the instance <2 - X>?\n";
+                cin >> generatedVertices;
+                cout << "What should be the maximum value of X and Y? <2 - Y>?\n";
+                cin >> maxValue;
+                loader.createRandomGraph(generatedVertices, maxValue);
                 break;
             }
             case 3:

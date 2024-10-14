@@ -15,7 +15,11 @@ public:
 	Loader();
 	~Loader();
 
-	bool OpenIni();
-	bool OpenTSPFile(std::string& FileName);
+	void deleteGraph();
+	void printGraph();
+	bool createRandomGraph(int generatedVertices, int maxValue);
+
+	bool openIni();
+	bool openTSPFile(std::string& FileName);
 
 };
