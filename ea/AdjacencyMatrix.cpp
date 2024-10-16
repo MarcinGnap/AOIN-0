@@ -60,7 +60,17 @@ AdjacencyMatrix::AdjacencyMatrix(int citiesNumber_, const float** data_)
     : citiesNumber(citiesNumber_)
 {
     // tutaj wpisywanie obliczonych distance do nowej struktury z3ebyu mozna bylo insert zrobis
-    //float tempData = new float*;
+    //float tempData = new float* [citiesNumber_];
+    float **tempData = new float* [citiesNumber_];
+
+    for (int i = 0; i < citiesNumber_; ++i)
+    {
+        tempData[i] = new float[citiesNumber_];
+
+        for (int j = 0; j < citiesNumber_; ++j)
+            tempData[i][j] = 0;
+    }
+
     for (size_t i = 0; i < citiesNumber_; i++)
     {
         for (size_t ii = 0; ii < citiesNumber_; ii++) {
