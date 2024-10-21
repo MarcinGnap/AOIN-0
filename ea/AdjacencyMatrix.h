@@ -1,35 +1,35 @@
 #pragma once
+
+#include <iostream>
+
 class AdjacencyMatrix
 {
-    float** matrix = nullptr;
+
+    int** matrix = nullptr;
 
     void allocateMemory();
-    void insertValues(const float* data_);
-    void copyValues(float** dataFromOrigin_);
+    void insertValues(const int* data_);
+    void copyValues(int** dataFromOrigin_);
 
     void deallocateMemory();
 
 public:
 
-    const int citiesNumber;
+    const size_t citiesNumber;
 
-    AdjacencyMatrix(int citiesNumber_, const float* data_);
-    AdjacencyMatrix(int citiesNumber_, const float** data_);
+    AdjacencyMatrix(size_t citiesNumber_, const int* data_);
     AdjacencyMatrix(const AdjacencyMatrix& origin_);
     ~AdjacencyMatrix();
 
-    float calculateDistance(float firstX, float firstY, float secondX, float secondY);
-
-    float** getMatrix() const
+    int** getMatrix() const
     {
         return this->matrix;
     }
 
-    int getValue(int source_, int destination_) const
+    int getValue(size_t source_, size_t destination_) const
     {
         return this->matrix[source_][destination_];
     }
 
     void printMatrix();
 };
-

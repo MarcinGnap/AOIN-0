@@ -1,7 +1,5 @@
 ﻿#include <iostream>
 #include "Loader.h"
-#include "EvoAlg.h"
-#include "AdjacencyMatrix.h"
 
 using namespace std;
 
@@ -9,7 +7,6 @@ int main()
 {
     short mainMenuChoice;
     Loader loader;
-    EvoAlg evoalg;
 
     for (;;)
     {
@@ -37,7 +34,8 @@ int main()
                 cout << "What should be the maximum value of X and Y? <2 - Y>?\n";
                 cin >> maxValue;
                 loader.createRandomGraph(generatedVertices, maxValue);
-                AdjacencyMatrix adjacencymatrix(generatedVertices, loader.verticesGraph);
+                int tempint = loader.verticesNumber;
+                // przerobić loader żeby dawał macierz sąsiedztwa?
                 break;
             }
             case 3:
