@@ -9,15 +9,16 @@ class AdjacencyMatrix
 
     void allocateMemory();
     void insertValues(const float* data_);
+    void insertValuesTwoDimension(float** data_);
     void copyValues(float** dataFromOrigin_);
 
     void deallocateMemory();
 
 public:
 
-    const size_t citiesNumber;
+    const int citiesNumber;
 
-    AdjacencyMatrix(size_t citiesNumber_, const float* data_);
+    AdjacencyMatrix(int citiesNumber_, float** data_);
     AdjacencyMatrix(const AdjacencyMatrix& origin_);
     ~AdjacencyMatrix();
 
@@ -26,7 +27,7 @@ public:
         return this->matrix;
     }
 
-    float getValue(size_t source_, size_t destination_) const
+    float getValue(int source_, int destination_) const
     {
         return this->matrix[source_][destination_];
     }

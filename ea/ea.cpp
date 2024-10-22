@@ -1,12 +1,14 @@
 ﻿#include <iostream>
 #include "Loader.h"
+#include "AdjacencyMatrix.h"
 
 using namespace std;
 
 int main()
 {
     short mainMenuChoice;
-    Loader loader;
+    Loader loader; 
+    AdjacencyMatrix* matrix{ nullptr };
 
     for (;;)
     {
@@ -28,15 +30,17 @@ int main()
             }
             case 2:
             {
+                if (matrix != nullptr)
+                    delete matrix;
                 int generatedVertices, maxValue;
                 cout << "How many vertices should be in the instance <2 - X>?\n";
                 cin >> generatedVertices;
                 cout << "What should be the maximum value of X and Y? <2 - Y>?\n";
                 cin >> maxValue;
                 loader.createRandomGraph(generatedVertices, maxValue);
-                int tempint = loader.verticesNumber;
                 loader.convertToAM();
-                // przerobić loader żeby dawał macierz sąsiedztwa?
+                matrix = new AdjacencyMatrix(loader.verticesNumber, loader.convertToAM());
+                matrix->printMatrix();
                 break;
             }
             case 3:

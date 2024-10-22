@@ -70,7 +70,6 @@ bool Loader::createRandomGraph(int generatedVertices, int maxValue)
 			verticesGraph[i][j] = rand() % maxValue;
 		}
 	}
-	printGraph();
 	return true;
 }
 
@@ -92,14 +91,14 @@ float** Loader::convertToAM()
 			matrix[i][ii] = calculateDistance(verticesGraph[i][0], verticesGraph[i][1], verticesGraph[ii][0], verticesGraph[ii][1]);
 		}
 	}
-	for (int i = 0; i < verticesNumber; i++)
+	/*for (int i = 0; i < verticesNumber; i++)
 	{
 		cout << i + 1 << "\t";
 		for (int ii = 0; ii < verticesNumber; ii++) {
 			cout << " " << matrix[i][ii];
 		}
 		cout << endl;
-	}
+	}*/
 	return matrix;
 }
 

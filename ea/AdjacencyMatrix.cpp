@@ -26,6 +26,17 @@ void AdjacencyMatrix::insertValues(const float* data_)
     }
 }
 
+void AdjacencyMatrix::insertValuesTwoDimension(float** data_)
+{
+    for (int i = 0; i < this->citiesNumber; ++i)
+    {
+        for (int j = 0; j < this->citiesNumber; ++j)
+        {
+            this->matrix[i][j] = data_[i][j];
+        }
+    }
+}
+
 void AdjacencyMatrix::copyValues(float** dataFromOrigin_)
 {
     for (int i = 0; i < this->citiesNumber; ++i)
@@ -49,11 +60,11 @@ void AdjacencyMatrix::deallocateMemory()
     this->matrix = nullptr;
 }
 
-AdjacencyMatrix::AdjacencyMatrix(size_t citiesNumber_, const float* data_)
+AdjacencyMatrix::AdjacencyMatrix(int citiesNumber_, float** data_)
     : citiesNumber(citiesNumber_)
 {
     this->allocateMemory();
-    this->insertValues(data_);
+    this->insertValuesTwoDimension(data_);
 }
 
 AdjacencyMatrix::AdjacencyMatrix(const AdjacencyMatrix& origin_)
