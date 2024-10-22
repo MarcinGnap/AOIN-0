@@ -35,6 +35,7 @@ int main()
                 cin >> maxValue;
                 loader.createRandomGraph(generatedVertices, maxValue);
                 int tempint = loader.verticesNumber;
+                loader.convertToAM();
                 // przerobić loader żeby dawał macierz sąsiedztwa?
                 break;
             }

@@ -74,6 +74,47 @@ bool Loader::createRandomGraph(int generatedVertices, int maxValue)
 	return true;
 }
 
+float** Loader::convertToAM()
+{
+	float** matrix = new float* [verticesNumber];
+
+	for (int i = 0; i < verticesNumber; ++i)
+	{
+		matrix[i] = new float[verticesNumber];
+
+		for (int j = 0; j < verticesNumber; ++j)
+			matrix[i][j] = 0;
+	}
+
+	for (int i = 0; i < verticesNumber; i++)
+	{
+		for (int ii = 0; ii < verticesNumber; ii++) {
+			matrix[i][ii] = calculateDistance(verticesGraph[i][0], verticesGraph[i][1], verticesGraph[ii][0], verticesGraph[ii][1]);
+		}
+	}
+	for (int i = 0; i < verticesNumber; i++)
+	{
+		cout << i + 1 << "\t";
+		for (int ii = 0; ii < verticesNumber; ii++) {
+			cout << " " << matrix[i][ii];
+		}
+		cout << endl;
+	}
+	return matrix;
+}
+
+float Loader::calculateDistance(float firstX, float firstY, float secondX, float secondY)
+{
+	float fullDistance, xDistance, yDistance;
+	xDistance = secondX - firstX;
+	yDistance = secondY - firstY;
+	xDistance = xDistance * xDistance;
+	yDistance = yDistance * yDistance;
+	fullDistance = xDistance + yDistance;
+	fullDistance = sqrt(fullDistance);
+	return fullDistance;
+}
+
 bool Loader::openIni()
 {
 	cout << "Opening .ini file...\n";

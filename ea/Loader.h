@@ -18,6 +18,8 @@ public:
 	void deleteGraph();
 	void printGraph();
 	bool createRandomGraph(int generatedVertices, int maxValue);
+	float** convertToAM();
+	float calculateDistance(float firstX, float firstY, float secondX, float secondY);
 
 	bool openIni();
 	bool openTSPFile(std::string& FileName);
