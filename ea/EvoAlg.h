@@ -1,14 +1,16 @@
 #pragma once
 //#include<algorithm>
 #include<vector>
+#include <algorithm>
 #include"Path.h"
 #include"AdjacencyMatrix.h"
+#include "Specimen.h"
 
 class EvoAlg
 {
 public:
 
-	EvoAlg();
+	EvoAlg() = default;;
 
     Path* solveTSP(const AdjacencyMatrix& matrix_, int sourceCity_ = 0);
     Path* solveTSP(std::string fileName_, std::string& writter_, const AdjacencyMatrix& matrix_, int sourceCity_ = 0);
@@ -46,8 +48,8 @@ public:
 
 private:
 
-    int sourceCity{ 0 };
-    int citiesNumber{ 0 };
+    int sourceVertice{ 0 };
+    int verticesNumber{ 0 };
 
     static double mutationProbability;
     static double crossoverProbability;
@@ -56,6 +58,15 @@ private:
 
     static char mutationType; // s = swap, i = insert
     static char crossoverType; // o = ox, p = pmx
+
+
+    Specimen bestSpecimen;
+    int bestOneTenthCrossovers{ 0 };
+    std::vector<Specimen> population;
+
+    void generateFirstPopulation(const AdjacencyMatrix& matrix_);
+    std::vector<int> shuffleChromosome(const std::vector<int>& vertices_);
+    static int getRandomInt(int min_, int max_);
 
 };
 

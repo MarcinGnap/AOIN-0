@@ -5,6 +5,8 @@
 
 class Specimen
 {
+public:
+
     Specimen() = default;
     explicit Specimen(std::vector<int>& chromosome_);
     ~Specimen() = default;
@@ -17,7 +19,7 @@ class Specimen
         return *this;
     }
 
-    void killIndividual();
+    void killSpecimen();
 
     void calculateFitness(const AdjacencyMatrix& matrix_, int source_);
     void mutate(char mutationType_);

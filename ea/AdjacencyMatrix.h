@@ -16,9 +16,9 @@ class AdjacencyMatrix
 
 public:
 
-    const int citiesNumber;
+    const int verticesNumber;
 
-    AdjacencyMatrix(int citiesNumber_, float** data_);
+    AdjacencyMatrix(int verticesNumber_, float** data_);
     AdjacencyMatrix(const AdjacencyMatrix& origin_);
     ~AdjacencyMatrix();
 

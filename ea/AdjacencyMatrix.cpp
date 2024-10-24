@@ -3,13 +3,13 @@
 
 void AdjacencyMatrix::allocateMemory()
 {
-    this->matrix = new float* [this->citiesNumber];
+    this->matrix = new float* [this->verticesNumber];
 
-    for (int i = 0; i < this->citiesNumber; ++i)
+    for (int i = 0; i < this->verticesNumber; ++i)
     {
-        this->matrix[i] = new float[this->citiesNumber];
+        this->matrix[i] = new float[this->verticesNumber];
 
-        for (int j = 0; j < this->citiesNumber; ++j)
+        for (int j = 0; j < this->verticesNumber; ++j)
             this->matrix[i][j] = 0;
     }
 
@@ -17,9 +17,9 @@ void AdjacencyMatrix::allocateMemory()
 
 void AdjacencyMatrix::insertValues(const float* data_)
 {
-    for (int i = 0, dataCounter = 0; i < this->citiesNumber; ++i)
+    for (int i = 0, dataCounter = 0; i < this->verticesNumber; ++i)
     {
-        for (int j = 0; j < this->citiesNumber; ++j, ++dataCounter)
+        for (int j = 0; j < this->verticesNumber; ++j, ++dataCounter)
         {
             this->matrix[i][j] = data_[dataCounter];
         }
@@ -28,9 +28,9 @@ void AdjacencyMatrix::insertValues(const float* data_)
 
 void AdjacencyMatrix::insertValuesTwoDimension(float** data_)
 {
-    for (int i = 0; i < this->citiesNumber; ++i)
+    for (int i = 0; i < this->verticesNumber; ++i)
     {
-        for (int j = 0; j < this->citiesNumber; ++j)
+        for (int j = 0; j < this->verticesNumber; ++j)
         {
             this->matrix[i][j] = data_[i][j];
         }
@@ -39,9 +39,9 @@ void AdjacencyMatrix::insertValuesTwoDimension(float** data_)
 
 void AdjacencyMatrix::copyValues(float** dataFromOrigin_)
 {
-    for (int i = 0; i < this->citiesNumber; ++i)
+    for (int i = 0; i < this->verticesNumber; ++i)
     {
-        for (int j = 0; j < this->citiesNumber; ++j)
+        for (int j = 0; j < this->verticesNumber; ++j)
         {
             this->matrix[i][j] = dataFromOrigin_[i][j];
         }
@@ -50,7 +50,7 @@ void AdjacencyMatrix::copyValues(float** dataFromOrigin_)
 
 void AdjacencyMatrix::deallocateMemory()
 {
-    for (int i = 0; i < this->citiesNumber; ++i)
+    for (int i = 0; i < this->verticesNumber; ++i)
     {
         delete[] this->matrix[i];
     }
@@ -60,15 +60,15 @@ void AdjacencyMatrix::deallocateMemory()
     this->matrix = nullptr;
 }
 
-AdjacencyMatrix::AdjacencyMatrix(int citiesNumber_, float** data_)
-    : citiesNumber(citiesNumber_)
+AdjacencyMatrix::AdjacencyMatrix(int verticesNumber_, float** data_)
+    : verticesNumber(verticesNumber_)
 {
     this->allocateMemory();
     this->insertValuesTwoDimension(data_);
 }
 
 AdjacencyMatrix::AdjacencyMatrix(const AdjacencyMatrix& origin_)
-    : citiesNumber(origin_.citiesNumber)
+    : verticesNumber(origin_.verticesNumber)
 {
     this->allocateMemory();
     this->copyValues(origin_.matrix);
@@ -81,9 +81,9 @@ AdjacencyMatrix::~AdjacencyMatrix()
 
 void AdjacencyMatrix::printMatrix()
 {
-    for (int i = 0; i < this->citiesNumber; ++i)
+    for (int i = 0; i < this->verticesNumber; ++i)
     {
-        for (int j = 0; j < this->citiesNumber; ++j)
+        for (int j = 0; j < this->verticesNumber; ++j)
         {
             std::cout << this->matrix[i][j] << " ";
         }

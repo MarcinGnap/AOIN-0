@@ -4,9 +4,10 @@
 Specimen::Specimen(std::vector<int>& chromosome_)
     : chromosome(chromosome_)
 {
+
 }
 
-void Specimen::killIndividual()
+void Specimen::killSpecimen()
 {
     this->chromosome.clear();
     this->fitness = INT_MAX;
