@@ -43,7 +43,12 @@ void Specimen::mutate(char mutationType_)
             break;
         }
         case 'i':{
-
+            auto tempChromosome = this->chromosome[secondIndex];
+            for (int i = secondIndex; i > firstIndex; --i)
+            {
+                this->chromosome[i] = this->chromosome[i - 1];
+            }
+            this->chromosome[firstIndex] = tempChromosome;
             break;
         }
         default: {
