@@ -5,6 +5,7 @@
 #include"Path.h"
 #include"AdjacencyMatrix.h"
 #include "Specimen.h"
+#include "timeMeasurement.h"
 
 class EvoAlg
 {
@@ -63,10 +64,17 @@ private:
     Specimen bestSpecimen;
     int bestOneTenthCrossovers{ 0 };
     std::vector<Specimen> population;
+    timeMeasurement timer;
 
     void generateFirstPopulation(const AdjacencyMatrix& matrix_);
+    void generateNewPopulation(std::vector<Specimen>& newPopulation_);
     std::vector<int> shuffleChromosome(const std::vector<int>& vertices_);
+    void crossover(std::vector<Specimen>& newPopulation_);
+    void executeCrossover(std::vector<int>& chromosome1_, std::vector<int>& chromosome2_);
+    void mutate(std::vector<Specimen>& newPopulation_);
+    
     static int getRandomInt(int min_, int max_);
+    static double getRandomDouble(double min_, double max_);
 
 };
 

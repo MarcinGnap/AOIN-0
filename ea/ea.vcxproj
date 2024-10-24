@@ -133,6 +133,7 @@
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="Specimen.cpp" />
+    <ClCompile Include="timeMeasurement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdjacencyMatrix.h" />
@@ -140,6 +141,7 @@
     <ClInclude Include="Loader.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="Specimen.h" />
+    <ClInclude Include="timeMeasurement.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ea.rc" />
