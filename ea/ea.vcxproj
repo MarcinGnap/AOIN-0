@@ -132,12 +132,14 @@
     <ClCompile Include="EvoAlg.cpp" />
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="Path.cpp" />
+    <ClCompile Include="Specimen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdjacencyMatrix.h" />
     <ClInclude Include="EvoAlg.h" />
     <ClInclude Include="Loader.h" />
     <ClInclude Include="Path.h" />
+    <ClInclude Include="Specimen.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ea.rc" />

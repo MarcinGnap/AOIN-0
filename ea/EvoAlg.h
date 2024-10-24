@@ -11,7 +11,7 @@ public:
 	EvoAlg();
 
     Path* solveTSP(const AdjacencyMatrix& matrix_, int sourceCity_ = 0);
-    Path* solveTSP(std::string fileName_, FileWritter& writter_, const AdjacencyMatrix& matrix_, int sourceCity_ = 0);
+    Path* solveTSP(std::string fileName_, std::string& writter_, const AdjacencyMatrix& matrix_, int sourceCity_ = 0);
 
     static void setStopTime(double stopTime_)
     {
